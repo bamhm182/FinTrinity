@@ -55,12 +55,13 @@ class FinTrinity:
         self.extract_psvimgtools(working_dir, decrypt_dir)
 
         # Hack
-        print(f"Applying Trinity Hack")
+        print(f"Applying Trinity Hack:\n\n\n")
         self.decrypt_game(decrypt_key, decrypt_dir)
         self.encrypt_game(decrypt_key, decrypt_dir, hack_dir)
         self.replace_folder(hack_dir, original_dir)
 
         print(f"\n\n\nTrinity Applied. Please refresh your QCMA database and transfer your game back to your Vita")
+        input("[PRESS ENTER TO CLOSE]")
 
     @staticmethod
     def get_game_id(root):
