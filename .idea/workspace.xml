@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e180edbc-9feb-42a5-ae16-886fced1d3b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FinTrinity.py" beforeDir="false" afterPath="$PROJECT_DIR$/FinTrinity.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/games.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FinTrinity.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="35" column="48" lean-forward="true" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+            <state relative-caret-position="312">
+              <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="68" selection-end-column="18" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -32,8 +33,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="256">
+                <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/User.py">
+        <entry file="file://$PROJECT_DIR$/classes/User.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
               <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
@@ -45,10 +58,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Game.py">
+        <entry file="file://$PROJECT_DIR$/classes/Game.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="368">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -56,13 +69,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Utils.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/Utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+            <state relative-caret-position="886">
+              <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,10 +105,10 @@
       <find>winreg</find>
       <find>self.target_user</find>
       <find>+</find>
-      <find>self.</find>
       <find>shut</find>
       <find>listd</find>
       <find>path</find>
+      <find>self.</find>
       <find>pboot</find>
     </findStrings>
     <replaceStrings>
@@ -99,18 +124,21 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/IbnTrinity.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/games.py" />
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/User.py" />
         <option value="$PROJECT_DIR$/Game.py" />
-        <option value="$PROJECT_DIR$/FinTrinity.py" />
         <option value="$PROJECT_DIR$/Utils.py" />
+        <option value="$PROJECT_DIR$/classes/GUI.py" />
+        <option value="$PROJECT_DIR$/FinTrinity.py" />
+        <option value="$PROJECT_DIR$/GUI.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -125,6 +153,11 @@
             <path>
               <item name="FinTrinity" type="b2602c69:ProjectViewProjectNode" />
               <item name="FinTrinity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FinTrinity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinTrinity" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -146,6 +179,12 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bamhm\git\FinTrinity" />
+      <recent name="C:\Users\bamhm\git\FinTrinity\classes" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -158,7 +197,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.FinTrinity">
+  <component name="RunManager" selected="Python.GUI (1)">
     <configuration name="FinTrinity" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="FinTrinity" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,7 +220,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="IbnTrinity" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="GUI (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="FinTrinity" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -194,7 +233,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\bamhm\git\ibntrinity\FinTrinity.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="FinTrinity" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/classes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\bamhm\git\FinTrinity\GUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -216,7 +277,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/User.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\bamhm\git\FinTrinity\classes\User.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -238,7 +299,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Utils.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\bamhm\git\FinTrinity\classes\Utils.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -249,10 +310,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.GUI (1)" />
         <item itemvalue="Python.FinTrinity" />
+        <item itemvalue="Python.GUI" />
         <item itemvalue="Python.User" />
         <item itemvalue="Python.Utils" />
-        <item itemvalue="Python.IbnTrinity" />
       </list>
     </recent_temporary>
   </component>
@@ -270,17 +332,18 @@
       <workItem from="1557185468259" duration="869000" />
       <workItem from="1557186347187" duration="13433000" />
       <workItem from="1557199854334" duration="1707000" />
-      <workItem from="1557244707792" duration="12102000" />
+      <workItem from="1557244707792" duration="18630000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28257000" />
+    <option name="totallyTimeSpent" value="34785000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16301969" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07942431" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -289,7 +352,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32932165" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3261105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -347,10 +410,12 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ibntrinity$IbnTrinity.coverage" NAME="IbnTrinity Coverage Results" MODIFIED="1557194934348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FinTrinity$FinTrinity.coverage" NAME="FinTrinity Coverage Results" MODIFIED="1557269440671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FinTrinity$FinTrinity.coverage" NAME="FinTrinity Coverage Results" MODIFIED="1557273315880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FinTrinity$Utils.coverage" NAME="Utils Coverage Results" MODIFIED="1557265231486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ibntrinity$FinTrinity.coverage" NAME="FinTrinity Coverage Results" MODIFIED="1557199467607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FinTrinity$User.coverage" NAME="User Coverage Results" MODIFIED="1557266898515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FinTrinity$GUI__1_.coverage" NAME="GUI (1) Coverage Results" MODIFIED="1557276482455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FinTrinity$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1557273308240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/classes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/games.py">
@@ -360,27 +425,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="336">
-            <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FinTrinity.py">
+    <entry file="file://$PROJECT_DIR$/classes/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="35" column="48" lean-forward="true" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+        <state relative-caret-position="368">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/User.py">
+    <entry file="file://$PROJECT_DIR$/classes/Utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="886">
+          <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/User.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
@@ -390,23 +455,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Game.py">
+    <entry file="file://$PROJECT_DIR$/FinTrinity.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="312">
+          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="68" selection-end-column="18" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Utils.py">
+    <entry file="file://$PROJECT_DIR$/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="60" column="22" lean-forward="true" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+        <state relative-caret-position="218">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="256">
+            <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

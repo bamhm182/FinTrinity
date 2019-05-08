@@ -1,7 +1,7 @@
 from urllib import request
 from re import findall
 import os
-from Game import Game
+from classes.Game import Game
 
 
 class User:

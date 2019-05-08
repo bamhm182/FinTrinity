@@ -1,50 +1,73 @@
 import sys
 import shutil
-import Utils
-from User import User
-from Game import Game
+from classes import Utils
+from classes.User import User
+from classes.Game import Game
 
-try:
-    apps_path = Utils.read_hkcu(r"Software\codestation\qcma", 'appsPath') + '/PGAME'
-    account = Utils.read_hkcu(r"Software\codestation\qcma", 'lastAccountId')
-    username = Utils.read_hkcu(r"Software\codestation\qcma", 'lastOnlineId')
-    user = User()
-    game = Game()
 
-    if username and account:
-        user.set_id(account)
-        user.set_name(username)
-        user.set_path(apps_path)
-        game = user.games[0]
+class FinTrinity:
+    def __init__(self):
+        self.apps_path = ""
+        self.working_dir = ""
+        self.hack_dir = ""
+        self.decrypt_dir = ""
+        self.backup_dir = ""
+        self.user = User()
+        self.game = Game()
 
-    if input(f"{game.title} ({game.id}) found for {user.name} ({user.id}). Continue? (yes/no): ")[0] != "y":
-        sys.exit("Aborted by User")
+    def read_registry(self):
+        self.apps_path = Utils.read_hkcu(r"Software\codestation\qcma", 'appsPath') + '/PGAME'
+        account = Utils.read_hkcu(r"Software\codestation\qcma", 'lastAccountId')
+        username = Utils.read_hkcu(r"Software\codestation\qcma", 'lastOnlineId')
 
-    working_dir = Utils.make_dir(f"{Utils.get_home()}/Desktop/FinTrinity{Utils.get_timestamp()}")
-    hack_dir = Utils.make_dir(working_dir / f"{game.id}.hacked")
-    decrypt_dir = working_dir / f"{game.id}.decrypted"
-    backup_dir = working_dir / f"{game.id}.backup"
-    print(f"Created Working Directory: {working_dir}")
+        if username and account:
+            self.user.set_id(account)
+            self.user.set_name(username)
+            self.user.set_path(self.apps_path)
+            self.game = self.user.games[0]
 
-    # Backup Game
-    shutil.copytree(game.path, backup_dir)
-    shutil.copytree(game.path, decrypt_dir)
+    def confirm_find(self):
+        ans = input(
+            f"{self.game.title} ({self.game.id}) found for {self.user.name} ({self.user.id}). Continue? (yes/no): ")
+        if ans[0] != "y" and ans[0] != "Y":
+            sys.exit("Aborted by User")
 
-    # Download Dependencies
-    print(f"Downloading and Extracting Dependencies")
-    Utils.download('https://github.com/TheOfficialFloW/Trinity/releases/download/v1.0/PBOOT.PBP', working_dir)
-    Utils.download('https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip',
-                   working_dir)
-    Utils.extract(f'{working_dir}/psvimgtools-0.1-win64.zip', decrypt_dir)
+    def setup_dirs(self):
+        self.working_dir = Utils.make_dir(f"{Utils.get_home()}/Desktop/FinTrinity{Utils.get_timestamp()}")
+        self.hack_dir = Utils.make_dir(self.working_dir / f"{self.game.id}.hacked")
+        self.decrypt_dir = self.working_dir / f"{self.game.id}.decrypted"
+        self.backup_dir = self.working_dir / f"{self.game.id}.backup"
+        print(f"Created Working Directory: {self.working_dir}")
 
-    # Hack
-    print(f"Applying Trinity Hack:\n\n\n")
-    Utils.decrypt_game(user.decrypt_key, decrypt_dir, working_dir / "PBOOT.PBP", game.id)
-    Utils.encrypt_game(user.decrypt_key, decrypt_dir, hack_dir)
-    Utils.replace_folder(hack_dir, game.path)
+    def backup_game(self):
+        shutil.copytree(self.game.path, self.backup_dir)
+        shutil.copytree(self.game.path, self.decrypt_dir)
 
-    print(f"\n\n\nTrinity Applied. Please refresh your QCMA database and transfer your game back to your Vita.")
-except SystemExit:
-    pass
-finally:
-    input("[PRESS ENTER TO CLOSE]")
+    def download_dependencies(self):
+        print(f"Downloading and Extracting Dependencies")
+        Utils.download('https://github.com/TheOfficialFloW/Trinity/releases/download/v1.0/PBOOT.PBP', self.working_dir)
+        Utils.download('https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip',
+                       self.working_dir)
+        Utils.extract(f'{self.working_dir}/psvimgtools-0.1-win64.zip', self.decrypt_dir)
+
+    def hack(self):
+        print(f"Applying Trinity Hack:\n\n\n")
+        Utils.decrypt_game(self.user.decrypt_key, self.decrypt_dir, self.working_dir / "PBOOT.PBP", self.game.id)
+        Utils.encrypt_game(self.user.decrypt_key, self.decrypt_dir, self.hack_dir)
+        Utils.replace_folder(self.hack_dir, self.game.path)
+        print(f"\n\n\nTrinity Applied. Please refresh your QCMA database and transfer your game back to your Vita.")
+
+
+if __name__ == "__main__":
+    try:
+        fin = FinTrinity()
+        fin.read_registry()
+        fin.confirm_find()
+        fin.setup_dirs()
+        fin.backup_game()
+        fin.download_dependencies()
+        fin.hack()
+    except SystemExit:
+        pass
+    finally:
+        input("[PRESS ENTER TO CLOSE]")
