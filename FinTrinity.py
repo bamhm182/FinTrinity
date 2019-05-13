@@ -33,7 +33,7 @@ class FinTrinity:
             sys.exit("Aborted by User")
 
     def setup_dirs(self):
-        self.working_dir = Utils.make_dir(f"{Utils.get_home()}/Desktop/FinTrinity{Utils.get_timestamp()}")
+        self.working_dir = Utils.make_dir(Utils.get_home() / "Desktop" / f"FinTrinity{Utils.get_timestamp()}")
         self.hack_dir = Utils.make_dir(self.working_dir / f"{self.game.id}.hacked")
         self.decrypt_dir = self.working_dir / f"{self.game.id}.decrypted"
         self.backup_dir = self.working_dir / f"{self.game.id}.backup"
@@ -48,7 +48,7 @@ class FinTrinity:
         Utils.download('https://github.com/TheOfficialFloW/Trinity/releases/download/v1.0/PBOOT.PBP', self.working_dir)
         Utils.download('https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip',
                        self.working_dir)
-        Utils.extract(f'{self.working_dir}/psvimgtools-0.1-win64.zip', self.decrypt_dir)
+        Utils.extract(self.working_dir / 'psvimgtools-0.1-win64.zip', self.decrypt_dir)
 
     def hack(self):
         print(f"Applying Trinity Hack:\n\n\n")

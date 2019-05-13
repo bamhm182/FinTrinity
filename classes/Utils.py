@@ -19,7 +19,7 @@ def decrypt_game(key, src, pboot, game_id):
 def encrypt_game(key, src, dst):
     print("\nEncrypting:\n")
     os.chdir(src)
-    command = f'psvimg-create -n game -K {key} game_dec {dst}/game'
+    command = f'psvimg-create -n game -K {key} game_dec "{dst}/game"'
     print(command)
     os.system(command)
 
