@@ -1,5 +1,7 @@
 import sys
+import os
 import shutil
+from pathlib import Path
 from classes import Utils
 from classes.User import User
 from classes.Game import Game
@@ -16,15 +18,23 @@ class FinTrinity:
         self.game = Game()
 
     def read_registry(self):
-        self.apps_path = Utils.read_hkcu(r"Software\codestation\qcma", 'appsPath') + '/PGAME'
-        account = Utils.read_hkcu(r"Software\codestation\qcma", 'lastAccountId')
-        username = Utils.read_hkcu(r"Software\codestation\qcma", 'lastOnlineId')
+        try:
+            self.apps_path = Path(Utils.read_hkcu(r"Software\codestation\qcma", 'appsPath')) / 'PGAME'
+            account = Utils.read_hkcu(r"Software\codestation\qcma", 'lastAccountId')
+            username = Utils.read_hkcu(r"Software\codestation\qcma", 'lastOnlineId')
 
-        if username and account:
-            self.user.set_id(account)
-            self.user.set_name(username)
-            self.user.set_path(self.apps_path)
-            self.game = self.user.games[0]
+            if not os.path.exists(self.apps_path):
+                print(f"{self.apps_path} does not exist. Please ensure you have run QCMA and backed up your game.")
+                sys.exit("Apps Path Does Not Exist")
+
+            if username and account:
+                self.user.set_id(account)
+                self.user.set_name(username)
+                self.user.set_path(self.apps_path)
+                self.game = self.user.games[0]
+        except FileNotFoundError:
+            print("QCMA registry keys do not exist! Please ensure you have run QCMA and backed up your game.")
+            sys.exit("QCMA Registry Keys Missing")
 
     def confirm_find(self):
         ans = input(
@@ -54,6 +64,11 @@ class FinTrinity:
         print(f"Applying Trinity Hack:\n\n\n")
         Utils.decrypt_game(self.user.decrypt_key, self.decrypt_dir, self.working_dir / "PBOOT.PBP", self.game.id)
         Utils.encrypt_game(self.user.decrypt_key, self.decrypt_dir, self.hack_dir)
+
+        if os.path.getsize(self.hack_dir / 'game' / 'game.psvimg') < 1000000:
+            print('Application of Trinity appears to have failed for the reasons listed above.')
+            sys.exit('Hack Too Small')
+
         Utils.replace_folder(self.hack_dir, self.game.path)
         print(f"\n\n\nTrinity Applied. Please refresh your QCMA database and transfer your game back to your Vita.")
 

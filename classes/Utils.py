@@ -5,6 +5,7 @@ from urllib import request
 from zipfile import ZipFile
 import datetime
 from pathlib import Path
+import sys
 
 
 def decrypt_game(key, src, pboot, game_id):
@@ -12,8 +13,10 @@ def decrypt_game(key, src, pboot, game_id):
     os.chdir(src)
     command = f'psvimg-extract -K {key} game/game.psvimg game_dec'
     print(command)
-    os.system(command)
-    shutil.copyfile(pboot, src / f'game_dec/ux0_pspemu_temp_game_PSP_GAME_{game_id}/PBOOT.PBP')
+    if os.system(command) != 0:
+        print("Decryption failed with the above information.")
+        sys.exit("Decryption Failed")
+    shutil.copyfile(pboot, src / 'game_dec' / f'ux0_pspemu_temp_game_PSP_GAME_{game_id}' / 'PBOOT.PBP')
 
 
 def encrypt_game(key, src, dst):
@@ -21,7 +24,9 @@ def encrypt_game(key, src, dst):
     os.chdir(src)
     command = f'psvimg-create -n game -K {key} game_dec "{dst}/game"'
     print(command)
-    os.system(command)
+    if os.system(command) != 0:
+        print("Game Creation failed with the above information.")
+        sys.exit("Game Creation Failed")
 
     shutil.copytree(src / 'license', dst / 'license')
     shutil.copytree(src / 'sce_sys', dst / 'sce_sys')
@@ -53,7 +58,7 @@ def replace_folder(src, dst):
         if os.path.exists(dst):
             shutil.rmtree(dst)
         shutil.copytree(src, dst)
-    except PermissionError:
+    except PermissionError or OSError:
         input(f"\nIt appears you have the following folder open:\n{dst}\n\nPlease close it and press Enter...")
         replace_folder(src, dst)
 
