@@ -19,8 +19,8 @@ class Game:
 
     def set_title(self):
         try:
-            with open(f'{self.path}/sce_sys/param.sfo') as fp:
+            with open(f'{self.path}/sce_sys/param.sfo', encoding="UTF-8", errors="ignore") as fp:
                 clean = sub(".u[0-9a-f]{4}", "", dumps(fp.read()))
                 self.title = findall("([A-Za-z -]{5,})", clean)[-1]
-        except FileNotFoundError or UnicodeDecodeError:
+        except (FileNotFoundError, UnicodeDecodeError):
             self.title = "Unknown"
