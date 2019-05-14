@@ -2,10 +2,11 @@ from tkinter import *
 from FinTrinity import FinTrinity
 from time import sleep
 
+
 class GUI:
     def __init__(self):
         self.fin = FinTrinity()
-        self.fin.read_registry()
+        self.fin.read_config()
 
         self.window = Tk()
         self.window.title("FinTrinity")

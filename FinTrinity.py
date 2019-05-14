@@ -1,6 +1,7 @@
 import sys
 import os
 import shutil
+import platform
 from pathlib import Path
 from classes import Utils
 from classes.User import User
@@ -17,11 +18,16 @@ class FinTrinity:
         self.user = User()
         self.game = Game()
 
-    def read_registry(self):
+    def read_config(self):
         try:
-            self.apps_path = Path(Utils.read_hkcu(r"Software\codestation\qcma", 'appsPath')) / 'PGAME'
-            account = Utils.read_hkcu(r"Software\codestation\qcma", 'lastAccountId')
-            username = Utils.read_hkcu(r"Software\codestation\qcma", 'lastOnlineId')
+            if platform.uname().system == "Windows":
+                self.apps_path = Path(Utils.read_hkcu(r"Software\codestation\qcma", 'appsPath')) / 'PGAME'
+                account = Utils.read_hkcu(r"Software\codestation\qcma", 'lastAccountId')
+                username = Utils.read_hkcu(r"Software\codestation\qcma", 'lastOnlineId')
+            elif platform.uname().system == "Linux":
+                self.apps_path = Path(Utils.read_conf('Linux', 'appsPath'))
+                account = Utils.read_conf('Linux', 'lastAccountId')
+                username = Utils.read_conf('Linux', 'lastOnlineId')
 
             if not os.path.exists(self.apps_path):
                 print(f"{self.apps_path} does not exist. Please ensure you have run QCMA and backed up your game.")
@@ -76,7 +82,7 @@ class FinTrinity:
 if __name__ == "__main__":
     try:
         fin = FinTrinity()
-        fin.read_registry()
+        fin.read_config()
         fin.confirm_find()
         fin.setup_dirs()
         fin.backup_game()
