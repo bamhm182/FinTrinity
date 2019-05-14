@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e180edbc-9feb-42a5-ae16-886fced1d3b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FinTrinity.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FinTrinity.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/Analysis-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/COLLECT-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/EXE-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/GUI.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/GUI.exe.manifest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/PKG-00.pkg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/PKG-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/PYZ-00.pyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/PYZ-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/Tree-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/Tree-01.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/base_library.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/warn-GUI.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/GUI/xref-GUI.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/GUI.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,10 +27,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+            <state relative-caret-position="32">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI.spec">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -330,12 +318,12 @@
       <workItem from="1557244707792" duration="19071000" />
       <workItem from="1557353510759" duration="3400000" />
       <workItem from="1557806257424" duration="99000" />
-      <workItem from="1557806383087" duration="82000" />
+      <workItem from="1557806383087" duration="134000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38807000" />
+    <option name="totallyTimeSpent" value="38859000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
@@ -453,10 +441,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GUI.spec">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        <state relative-caret-position="32">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
