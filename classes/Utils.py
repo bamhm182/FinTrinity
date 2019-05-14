@@ -33,10 +33,8 @@ def encrypt_game(key, src, dst):
 
 
 def make_dir(d):
-    d = Path(d)
-    if not os.path.exists(d):
-        os.makedirs(d)
-    return d
+    os.makedirs(d, exist_ok=True)
+    return Path(d)
 
 
 def read_hkcu(key: str, val: str):
