@@ -20,14 +20,17 @@ class FinTrinity:
 
     def read_config(self):
         try:
+            username = None
+            account = None
+
             if platform.uname().system == "Windows":
                 self.apps_path = Path(Utils.read_hkcu(r"Software\codestation\qcma", 'appsPath')) / 'PGAME'
                 account = Utils.read_hkcu(r"Software\codestation\qcma", 'lastAccountId')
                 username = Utils.read_hkcu(r"Software\codestation\qcma", 'lastOnlineId')
             elif platform.uname().system == "Linux":
-                self.apps_path = Path(Utils.read_conf('Linux', 'appsPath'))
-                account = Utils.read_conf('Linux', 'lastAccountId')
-                username = Utils.read_conf('Linux', 'lastOnlineId')
+                self.apps_path = Path(Utils.read_conf('appsPath')) / 'PGAME'
+                account = Utils.read_conf('lastAccountId')
+                username = Utils.read_conf('lastOnlineId')
 
             if not os.path.exists(self.apps_path):
                 print(f"{self.apps_path} does not exist. Please ensure you have run QCMA and backed up your game.")
@@ -68,10 +71,15 @@ class FinTrinity:
 
     def download_dependencies(self):
         print(f"Downloading and Extracting Dependencies")
+        psvimgtools = None
+        if platform.uname().system == "Windows":
+            psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip"
+        elif platform.uname().system == "Linux":
+            psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-linux64.zip"
+
         Utils.download('https://github.com/TheOfficialFloW/Trinity/releases/download/v1.0/PBOOT.PBP', self.working_dir)
-        Utils.download('https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip',
-                       self.working_dir)
-        Utils.extract(self.working_dir / 'psvimgtools-0.1-win64.zip', self.decrypt_dir)
+        Utils.download(psvimgtools, self.working_dir)
+        Utils.extract(self.working_dir / psvimgtools.split("/")[-1], self.decrypt_dir)
 
     def hack(self):
         print(f"Applying Trinity Hack:\n\n\n")
