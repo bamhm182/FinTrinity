@@ -1,18 +1,37 @@
 # FinTrinity
 
-This is a GUI that allows you to use the Trinity Playstation Vita hack by TheOfficialFloW without much effort.
+This is a GUI/CLI Python script that allows you to use the Trinity Playstation Vita hack by TheOfficialFloW without
+much effort.
 
 **This is still very much a work in progress**
 
-If you do use this, PLEASE make a backup of your game folder first.
+FinTrinity aims to make a backup of your game on your Desktop, but it never hurts for you to make an additional,
+manual, backup!
 
-This is currently only for Windows. I have tested it with Windows 10 and the latest version of QCMA (v0.4.1)
+# Status
 
-To use it, you will need to have [python 3.7.3](https://www.python.org/downloads/) installed and in your path. If you
-download it and run through the installer, you should be good to go. Once you have that installed, 
-[download the zip](https://github.com/bamhm182/FinTrinity/archive/master.zip) of this repository and double click on
-either FinTrinity.py or GUI.py
+## Windows/Linux
+* Standalone and Python Version Fully Working
+* Test with Windows 10 (64-bit) and Ubuntu 18.04 (64-bit)
 
+## macOS
+* Not Working
+* If you know where the QCMA config is located, I can get this working in minutes... Please let me know!
+
+# Usage
+
+## Standalone Version
+
+1) Download the [latest release](https://github.com/bamhm182/FinTrinity/releases) ending in -Linux if you are on Linux,
+or -Windows if you are on Windows.
+2) Double click the FinTrinity executable and click the "Patch" button.
+
+## Python 3.7.3 Version
+
+1) Install [python 3.7.3](https://www.python.org/downloads/)  
+2) [Download the zip](https://github.com/bamhm182/FinTrinity/archive/master.zip) of this repository and double click on
+either FinTrinity.py or GUI.py  
+3) Confirm the game is correct and it should take care of the rest
 
 # Screenshots
 ![GUI Screenshot 1](resources/gui-1.jpg)
@@ -22,4 +41,11 @@ either FinTrinity.py or GUI.py
 # TODO
 * Prettier GUI
 * Ability to select from a list of games in the GUI
-* macOS and Linux support
+* macOS support (If you know where the QCMA config is, please let me know!)
+
+# Special Thanks
+
+[TheOfficialFloW](https://github.com/theofficialflow): Created Trinity
+(Also, all around awesome leader in the Vita community)  
+[/u/lilracerboi](https://www.reddit.com/user/lilracerboi): Recommended PyInstaller 
+(Allows you to use FinTrinity w/o Python)
