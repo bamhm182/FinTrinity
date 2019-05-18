@@ -73,7 +73,10 @@ class FinTrinity:
         print(f"Downloading and Extracting Dependencies")
         psvimgtools = None
         if platform.uname().system == "Windows":
-            psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip"
+            if platform.uname().machine == "i386":
+                psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win32.zip"
+            else:
+                psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip"
         elif platform.uname().system == "Linux":
             psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-linux64.zip"
 
