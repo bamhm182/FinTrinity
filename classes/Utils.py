@@ -66,9 +66,9 @@ def pretty_exit_code(code: str):
         "Old Python": f"FinTrinity requires Python 3.7.3. You have the following version: {sys.version}",
         "QCMA Settings Missing": "QCMA Settings are missing! Please ensure you have QCMA installed",
         "Aborted by User": "You have aborted FinTrinity",
-        "No Working Dir Permissions": "FinTrinity cannot find a place to work. If you are on Windows, please " +
-                                      "make sure that you add FinTrinity to your apps Allowed through Controlled " +
-                                      "Folder Access",
+        "No Working Dir Permissions": "FinTrinity cannot find a place to work. If you are on Windows and Controlled " +
+                                      "Folder Access is enabled, please consider disabling it while running " +
+                                      "FinTrinity.",
         "Hack Too Small": "Application of Trinity appears to have failed for the reasons listed above."
     }
     return switcher.get(code, "Something went wrong")
