@@ -7,12 +7,13 @@ from pathlib import Path
 import sys
 import platform
 import stat
+import plistlib
 
 
 def decrypt_game(key, src, pboot, game_id):
     print("Decrypting:\n")
     os.chdir(src)
-    if platform.uname().system == "Linux":
+    if platform.system() == "Linux":
         os.chmod("./psvimg-extract", stat.S_IRWXU)
     command = f'{Path("psvimg-extract").absolute()} -K {key} game/game.psvimg game_dec'
     print(command)
@@ -25,7 +26,7 @@ def decrypt_game(key, src, pboot, game_id):
 def encrypt_game(key, src, dst):
     print("\nEncrypting:\n")
     os.chdir(src)
-    if platform.uname().system == "Linux":
+    if platform.system() == "Linux":
         os.chmod("./psvimg-create", stat.S_IRWXU)
     command = f'{Path("psvimg-create").absolute()} -n game -K {key} game_dec "{dst}/game"'
     print(command)
@@ -53,6 +54,12 @@ def read_conf(val: str):
         for line in config.readlines():
             if line.startswith(val):
                 return line.split("=")[1].replace("\n", "")
+
+
+def read_plist(val: str):
+    filename = os.path.expanduser("~/Library/Preferences/com.codestation.qcma.plist")
+    plist = plistlib.loads(open(filename, 'rb').read())
+    return plist[val]
 
 
 def download(url, dst):

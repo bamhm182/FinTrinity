@@ -23,14 +23,18 @@ class FinTrinity:
             username = None
             account = None
 
-            if platform.uname().system == "Windows":
+            if platform.system() == "Windows":
                 self.apps_path = Path(Utils.read_hkcu(r"Software\codestation\qcma", 'appsPath')) / 'PGAME'
                 account = Utils.read_hkcu(r"Software\codestation\qcma", 'lastAccountId')
                 username = Utils.read_hkcu(r"Software\codestation\qcma", 'lastOnlineId')
-            elif platform.uname().system == "Linux":
+            elif platform.system() == "Linux":
                 self.apps_path = Path(Utils.read_conf('appsPath')) / 'PGAME'
                 account = Utils.read_conf('lastAccountId')
                 username = Utils.read_conf('lastOnlineId')
+            elif platform.system() == "Darwin":
+                self.apps_path = Path(Utils.read_plist('appsPath')) / 'PGAME'
+                account = Utils.read_plist('lastAccountId')
+                username = Utils.read_plist('lastOnlineId')
 
             if not os.path.exists(self.apps_path):
                 print(f"{self.apps_path} does not exist. Please ensure you have run QCMA and backed up your game.")
@@ -72,13 +76,15 @@ class FinTrinity:
     def download_dependencies(self):
         print(f"Downloading and Extracting Dependencies")
         psvimgtools = None
-        if platform.uname().system == "Windows":
-            if platform.uname().machine == "i386":
+        if platform.system() == "Windows":
+            if platform.machine() == "i386":
                 psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win32.zip"
             else:
                 psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip"
-        elif platform.uname().system == "Linux":
+        elif platform.system() == "Linux":
             psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-linux64.zip"
+        elif platform.system() == "Darwin":
+            psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-osx.zip"
 
         Utils.download('https://github.com/TheOfficialFloW/Trinity/releases/download/v1.0/PBOOT.PBP', self.working_dir)
         Utils.download(psvimgtools, self.working_dir)

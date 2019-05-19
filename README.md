@@ -15,8 +15,8 @@ manual, backup!
 * Test with Windows 10 (64-bit) and Ubuntu 18.04 (64-bit)
 
 ## macOS
-* Not Working
-* If you know where the QCMA config is located, I can get this working in minutes... Please let me know!
+* Python version possibly working. Waiting for someone to test it.
+* Standalone version probably isn't coming because I don't have a way to build it.
 
 # Usage
 
@@ -48,4 +48,6 @@ either FinTrinity.py or GUI.py
 [TheOfficialFloW](https://github.com/theofficialflow): Created Trinity
 (Also, all around awesome leader in the Vita community)  
 [/u/lilracerboi](https://www.reddit.com/user/lilracerboi): Recommended PyInstaller 
-(Allows you to use FinTrinity w/o Python)
+(Allows you to use FinTrinity w/o Python)  
+[Piotr Pabich](https://github.com/hindo): Not only told me where macOS settings were, but also how to read them. Huge
+shout out to him for making macOS support possible.
