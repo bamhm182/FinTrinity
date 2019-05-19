@@ -30,6 +30,7 @@ def encrypt_game(key, src, dst):
         os.chmod("./psvimg-create", stat.S_IRWXU)
     command = f'{Path("psvimg-create").absolute()} -n game -K {key} game_dec "{dst}/game"'
     print(command)
+
     if os.system(command) != 0:
         print("Game Creation failed with the above information.")
         sys.exit("Game Creation Failed")
@@ -39,8 +40,38 @@ def encrypt_game(key, src, dst):
 
 
 def make_dir(d):
-    os.makedirs(d, exist_ok=True)
-    return Path(d)
+    try:
+        os.makedirs(d, exist_ok=True)
+        return Path(d)
+    except FileNotFoundError:
+        sys.exit("No Working Dir Permissions")
+
+
+
+def check_version():
+    if sys.version_info.major < 3 or (sys.version_info.major == 3 and sys.version_info.minor < 7):
+        sys.exit("Old Python")
+
+
+def check_issue(passed: bool, fail_code: str, fatal: bool = True):
+    if not passed and fatal:
+        sys.exit(fail_code)
+    return passed
+
+
+def pretty_exit_code(code: str):
+    switcher = {
+        "Apps Path Does Not Exist": "Your appsPath does not exist. Please ensure you have run QCMA and" +
+                                    "backed up your game",
+        "Old Python": f"FinTrinity requires Python 3.7.3. You have the following version: {sys.version}",
+        "QCMA Settings Missing": "QCMA Settings are missing! Please ensure you have QCMA installed",
+        "Aborted by User": "You have aborted FinTrinity",
+        "No Working Dir Permissions": "FinTrinity cannot find a place to work. If you are on Windows, please " +
+                                      "make sure that you add FinTrinity to your apps Allowed through Controlled " +
+                                      "Folder Access",
+        "Hack Too Small": "Application of Trinity appears to have failed for the reasons listed above."
+    }
+    return switcher.get(code, "Something went wrong")
 
 
 def read_hkcu(key: str, val: str):

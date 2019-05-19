@@ -36,9 +36,7 @@ class FinTrinity:
                 account = Utils.read_plist('lastAccountId')
                 username = Utils.read_plist('lastOnlineId')
 
-            if not os.path.exists(self.apps_path):
-                print(f"{self.apps_path} does not exist. Please ensure you have run QCMA and backed up your game.")
-                sys.exit("Apps Path Does Not Exist")
+            Utils.check_issue(os.path.exists(self.apps_path), "Apps Path Does Not Exist")
 
             if username and account:
                 self.user.set_id(account)
@@ -46,22 +44,20 @@ class FinTrinity:
                 self.user.set_path(self.apps_path)
                 self.game = self.user.games[0]
         except FileNotFoundError:
-            print("QCMA registry keys do not exist! Please ensure you have run QCMA and backed up your game.")
-            sys.exit("QCMA Registry Keys Missing")
+            sys.exit("QCMA Settings Missing")
 
     def confirm_find(self):
         ans = input(
             f"{self.game.title} ({self.game.id}) found for {self.user.name} ({self.user.id}). Continue? (yes/no): ")
-        if ans[0] != "y" and ans[0] != "Y":
-            sys.exit("Aborted by User")
+        Utils.check_issue(ans[0] in "yY", "Aborted by User")
 
     def setup_dirs(self):
         base_dir = "C:"
-        if os.access(Utils.get_home() / 'Desktop', os.W_OK):
+
+        if Utils.check_issue(os.access(Utils.get_home() / 'Desktop', os.W_OK), "No Working Dir Permissions", False):
             base_dir = Utils.get_home() / 'Desktop'
-        elif not os.access(base_dir, os.W_OK):
-            print(r"Cannot write to either your Desktop or C:\ for some reason")
-            sys.exit("No Working Dir Permissions")
+
+        Utils.check_issue(os.access(base_dir, os.W_OK), "No Working Dir Permissions")
 
         self.working_dir = Utils.make_dir(base_dir / f"FinTrinity{Utils.get_timestamp()}")
         self.hack_dir = Utils.make_dir(self.working_dir / f"{self.game.id}.hacked")
@@ -77,10 +73,10 @@ class FinTrinity:
         print(f"Downloading and Extracting Dependencies")
         psvimgtools = None
         if platform.system() == "Windows":
-            if platform.machine() == "i386":
-                psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win32.zip"
-            else:
+            if platform.machine() == "AMD64":
                 psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win64.zip"
+            else:
+                psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-win32.zip"
         elif platform.system() == "Linux":
             psvimgtools = "https://github.com/yifanlu/psvimgtools/releases/download/v0.1/psvimgtools-0.1-linux64.zip"
         elif platform.system() == "Darwin":
@@ -95,9 +91,7 @@ class FinTrinity:
         Utils.decrypt_game(self.user.decrypt_key, self.decrypt_dir, self.working_dir / "PBOOT.PBP", self.game.id)
         Utils.encrypt_game(self.user.decrypt_key, self.decrypt_dir, self.hack_dir)
 
-        if os.path.getsize(self.hack_dir / 'game' / 'game.psvimg') < 1000000:
-            print('Application of Trinity appears to have failed for the reasons listed above.')
-            sys.exit('Hack Too Small')
+        Utils.check_issue(os.path.getsize(self.hack_dir / 'game' / 'game.psvimg') > 1000000, "Hack Too Small")
 
         Utils.replace_folder(self.hack_dir, self.game.path)
         print(f"\n\n\nTrinity Applied. Please refresh your QCMA database and transfer your game back to your Vita.")
@@ -105,6 +99,7 @@ class FinTrinity:
 
 if __name__ == "__main__":
     try:
+        Utils.check_version()
         fin = FinTrinity()
         fin.read_config()
         fin.confirm_find()
@@ -112,7 +107,8 @@ if __name__ == "__main__":
         fin.backup_game()
         fin.download_dependencies()
         fin.hack()
-    except SystemExit:
+    except SystemExit as e:
+        print(Utils.pretty_exit_code(e.code))
         pass
     finally:
         input("[PRESS ENTER TO CLOSE]")
