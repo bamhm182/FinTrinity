@@ -13,27 +13,25 @@ import plistlib
 def decrypt_game(key, src, pboot, game_id):
     print("Decrypting:\n")
     os.chdir(src)
-    if platform.system() == "Linux":
+    if platform.system() == "Linux" or platform.system() == "Darwin":
         os.chmod("./psvimg-extract", stat.S_IRWXU)
     command = f'{Path("psvimg-extract").absolute()} -K {key} game/game.psvimg game_dec'
     print(command)
-    if os.system(command) != 0:
-        print("Decryption failed with the above information.")
-        sys.exit("Decryption Failed")
+
+    check_issue(os.system(command) == 0, "Decryption Failed")
+
     shutil.copyfile(pboot, src / 'game_dec' / f'ux0_pspemu_temp_game_PSP_GAME_{game_id}' / 'PBOOT.PBP')
 
 
 def encrypt_game(key, src, dst):
     print("\nEncrypting:\n")
     os.chdir(src)
-    if platform.system() == "Linux":
+    if platform.system() == "Linux" or platform.system() == "Darwin":
         os.chmod("./psvimg-create", stat.S_IRWXU)
     command = f'{Path("psvimg-create").absolute()} -n game -K {key} game_dec "{dst}/game"'
     print(command)
 
-    if os.system(command) != 0:
-        print("Game Creation failed with the above information.")
-        sys.exit("Game Creation Failed")
+    check_issue(os.system(command) == 0, "Game Creation Failed")
 
     shutil.copytree(src / 'license', dst / 'license')
     shutil.copytree(src / 'sce_sys', dst / 'sce_sys')
@@ -47,10 +45,8 @@ def make_dir(d):
         sys.exit("No Working Dir Permissions")
 
 
-
 def check_version():
-    if sys.version_info.major < 3 or (sys.version_info.major == 3 and sys.version_info.minor < 7):
-        sys.exit("Old Python")
+    check_issue(sys.version_info.major == 3 and sys.version_info.minor == 7, "Old Python")
 
 
 def check_issue(passed: bool, fail_code: str, fatal: bool = True):
@@ -69,9 +65,11 @@ def pretty_exit_code(code: str):
         "No Working Dir Permissions": "FinTrinity cannot find a place to work. If you are on Windows and Controlled " +
                                       "Folder Access is enabled, please consider disabling it while running " +
                                       "FinTrinity.",
-        "Hack Too Small": "Application of Trinity appears to have failed for the reasons listed above."
+        "Hack Too Small": "Application of Trinity appears to have failed for the reasons listed above.",
+        "Decryption Failed": "Decryption failed with the above information.",
+        "Game Creation Failed": "Game Creation failed with the above information."
     }
-    return switcher.get(code, "Something went wrong")
+    return switcher.get(code, "Something unexpected occurred. Please let me know on the FinTrinity GitHub.")
 
 
 def read_hkcu(key: str, val: str):
