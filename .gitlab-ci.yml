@@ -1,0 +1,22 @@
+stages:
+  - build
+
+Build:
+  image: "python:latest"
+  stage: build
+  script:
+    - apt update
+    - apt install zip
+    - pip install pyinstaller
+    - pyinstaller --onefile GUI.py
+    - cp -r classes dist/
+    - cp *.py dist/
+    - cd dist
+    - mv GUI FinTrinity-Linux
+    - zip -r FinTrinity.zip classes *.py
+  artifacts:
+    paths:
+      - dist/FinTrinity-Linux
+      - dist/FinTrinity.zip
+    expire_in: 1 day
+    when: always
