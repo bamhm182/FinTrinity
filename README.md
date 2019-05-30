@@ -50,4 +50,6 @@ either FinTrinity.py or GUI.py
 [/u/lilracerboi](https://www.reddit.com/user/lilracerboi): Recommended PyInstaller 
 (Allows you to use FinTrinity w/o Python)  
 [Piotr Pabich](https://github.com/hindo): Not only told me where macOS settings were, but also how to read them. Huge
-shout out to him for making macOS support possible.
+shout out to him for making macOS support possible.  
+[theowhy](https://github.com/theowhy): Furthered FinTrinity by allowing it to list all of the games rather than just the
+newest one.

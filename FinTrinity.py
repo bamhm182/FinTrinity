@@ -2,6 +2,7 @@ import sys
 import os
 import shutil
 import platform
+from time import sleep
 from pathlib import Path
 from classes import Utils
 from classes.User import User
@@ -42,14 +43,24 @@ class FinTrinity:
                 self.user.set_id(account)
                 self.user.set_name(username)
                 self.user.set_path(self.apps_path)
-                self.game = self.user.games[0]
+
+                while os.path.exists(self.apps_path / account / '_TEMP'):
+                    print(
+                        f'{self.apps_path / account / "_TEMP"} found. QCMA appears to be backing up a game. We will'
+                        f'wait until this operation completes. Trying again in 15 seconds...'
+                    )
+                    sleep(15)
         except FileNotFoundError:
             sys.exit("QCMA Settings Missing")
 
-    def confirm_find(self):
-        ans = input(
-            f"{self.game.title} ({self.game.id}) found for {self.user.name} ({self.user.id}). Continue? (yes/no): ")
-        Utils.check_issue(ans[0] in "yY", "Aborted by User")
+    def select_game(self):
+        for game in self.user.games:
+            ans = input(
+                f"{game.title} ({game.id}) found for {self.user.name} ({self.user.id}). Use this game? (yes/no): ")
+            if ans[0] in "yY":
+                self.game = game
+                return True
+        return False
 
     def setup_dirs(self):
         base_dir = "C:"
@@ -102,11 +113,11 @@ if __name__ == "__main__":
         Utils.check_version()
         fin = FinTrinity()
         fin.read_config()
-        fin.confirm_find()
-        fin.setup_dirs()
-        fin.backup_game()
-        fin.download_dependencies()
-        fin.hack()
+        if fin.select_game():
+            fin.setup_dirs()
+            fin.backup_game()
+            fin.download_dependencies()
+            fin.hack()
     except SystemExit as e:
         print(Utils.pretty_exit_code(e.code))
         pass

@@ -43,9 +43,9 @@ class User:
 
         a.sort(reverse=True, key=lambda s: os.path.getmtime(os.path.join(self.path, s)))
         for folder in a:
-            game_id = findall(r"([A-Z]{4}[0-9]{5})$", folder)[0]
+            game_id = findall(r"([A-Z]{4}[0-9]{5})$", folder)
             if game_id:
                 game = Game()
-                game.set_id(game_id)
+                game.set_id(game_id[0])
                 game.set_path(self.path)
                 self.games.append(game)
