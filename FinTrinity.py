@@ -61,7 +61,7 @@ class FinTrinity:
         return False
 
     def setup_dirs(self):
-        base_dir = "C:"
+        base_dir = Path(os.getcwd())
 
         if Utils.check_issue(os.access(Utils.get_home() / 'Desktop', os.W_OK), "No Working Dir Permissions", False):
             base_dir = Utils.get_home() / 'Desktop'
