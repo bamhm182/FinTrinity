@@ -65,8 +65,8 @@ class FinTrinity:
 
         if Utils.check_issue(os.access(Utils.get_home() / 'Desktop', os.W_OK), "No Working Dir Permissions", False):
             base_dir = Utils.get_home() / 'Desktop'
-
-        Utils.check_issue(os.access(base_dir, os.W_OK), "No Working Dir Permissions")
+        else:
+            Utils.check_issue(os.access(base_dir, os.W_OK), "No Working Dir Permissions")
 
         self.working_dir = Utils.make_dir(base_dir / f"FinTrinity{Utils.get_timestamp()}")
         self.hack_dir = Utils.make_dir(self.working_dir / f"{self.game.id}.hacked")
