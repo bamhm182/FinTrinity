@@ -8,6 +8,10 @@ much effort.
 FinTrinity aims to make a backup of your game on your Desktop, but it never hurts for you to make an additional,
 manual, backup!
 
+Note that Windows may say the windows executable is a virus. This is a known issue with the way that I built  
+the file and I'm working on getting it resolved. It is not a virus. This warning is a false positive.  
+You can read more about this [here](https://stackoverflow.com/questions/43777106/program-made-with-pyinstaller-now-seen-as-a-trojan-horse-by-avg)
+
 # Status
 
 ## Windows/Linux
