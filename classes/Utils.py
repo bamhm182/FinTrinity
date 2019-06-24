@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 import platform
 import stat
-import plistlib
+from subprocess import call
 
 
 def decrypt_game(key, src, pboot, game_id):
@@ -15,10 +15,9 @@ def decrypt_game(key, src, pboot, game_id):
     os.chdir(src)
     if platform.system() == "Linux" or platform.system() == "Darwin":
         os.chmod("./psvimg-extract", stat.S_IRWXU)
-    command = f'"{Path("psvimg-extract").absolute()}" -K {key} game/game.psvimg game_dec'
-    print(command)
+    command = [str(Path("psvimg-extract").absolute()), "-K", key, "game/game.psvimg", "game_dec"]
 
-    check_issue(os.system(command) == 0, "Decryption Failed")
+    check_issue(call(command) == 0, "Decryption Failed")
 
     shutil.copyfile(pboot, src / 'game_dec' / f'ux0_pspemu_temp_game_PSP_GAME_{game_id}' / 'PBOOT.PBP')
 
@@ -28,10 +27,9 @@ def encrypt_game(key, src, dst):
     os.chdir(src)
     if platform.system() == "Linux" or platform.system() == "Darwin":
         os.chmod("./psvimg-create", stat.S_IRWXU)
-    command = f'"{Path("psvimg-create").absolute()}" -n game -K {key} game_dec "{dst}/game"'
-    print(command)
+    command = [str(Path("psvimg-create").absolute()), "-n", "game", "-K", key, "game_dec", str(dst / "game")]
 
-    check_issue(os.system(command) == 0, "Game Creation Failed")
+    check_issue(call(command) == 0, "Game Creation Failed")
 
     shutil.copytree(src / 'license', dst / 'license')
     shutil.copytree(src / 'sce_sys', dst / 'sce_sys')
