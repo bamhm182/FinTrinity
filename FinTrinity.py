@@ -45,8 +45,8 @@ class FinTrinity:
                 self.user.set_path(self.apps_path)
 
                 while os.path.exists(self.apps_path / account / '_TEMP'):
-                    print(f'{self.apps_path / account / "_TEMP"} found. QCMA appears to be backing up a game. We will')
-                    print(f'wait until this operation completes. Trying again in 15 seconds...')
+                    print('_TEMP folder found alongside game backups. QCMA appears to be backing up a game. We will')
+                    print('wait until this operation completes. Trying again in 15 seconds...')
                     sleep(15)
         except FileNotFoundError:
             sys.exit("QCMA Settings Missing")

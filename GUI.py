@@ -78,7 +78,7 @@ class GUI:
         self.fin.download_dependencies()
         self.fin.hack()
         self.btn_confirm.configure(text="Finished!")
-        self.btn_confirm.configure(state=NORMAL, command=self.window.destroy)
+        self.btn_confirm.configure(state=DISABLED, command=self.window.destroy)
         self.lbl_info.config(text="Please refresh your QCMA database!")
         self.window.update()
 

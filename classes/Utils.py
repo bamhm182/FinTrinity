@@ -15,7 +15,7 @@ def decrypt_game(key, src, pboot, game_id):
     os.chdir(src)
     if platform.system() == "Linux" or platform.system() == "Darwin":
         os.chmod("./psvimg-extract", stat.S_IRWXU)
-    command = f'{Path("psvimg-extract").absolute()} -K {key} game/game.psvimg game_dec'
+    command = f'"{Path("psvimg-extract").absolute()}" -K {key} game/game.psvimg game_dec'
     print(command)
 
     check_issue(os.system(command) == 0, "Decryption Failed")
@@ -28,7 +28,7 @@ def encrypt_game(key, src, dst):
     os.chdir(src)
     if platform.system() == "Linux" or platform.system() == "Darwin":
         os.chmod("./psvimg-create", stat.S_IRWXU)
-    command = f'{Path("psvimg-create").absolute()} -n game -K {key} game_dec "{dst}/game"'
+    command = f'"{Path("psvimg-create").absolute()}" -n game -K {key} game_dec "{dst}/game"'
     print(command)
 
     check_issue(os.system(command) == 0, "Game Creation Failed")
